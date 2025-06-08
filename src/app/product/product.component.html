@@ -1,0 +1,18 @@
+<div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden shadow shadow-lg">
+  <img [src]="product.imgUrl" class="card-img-top object-fit-cover" [alt]="product.productName" style="height: 200px;">
+
+  <div class="card-body d-flex flex-column justify-content-between">
+    <div>
+      <h5 class="card-title fw-semibold text-primary">{{ product.productName }}</h5>
+      <p class="card-text text-muted">Price: ${{ product.price }}</p>
+      <p class="card-text small text-secondary border-start ps-2 border-3 border-warning">
+        {{ product.description }}
+      </p>
+      <p class="card-text text-success">Stock: {{ product.stockCount }}</p>
+    </div>
+
+    <div class="mt-auto">
+      <button class=" btn-color w-100 text-dark mt-3 ">Add to Cart</button>
+    </div>
+  </div>
+</div>
