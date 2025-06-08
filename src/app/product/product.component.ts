@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../modals/product';
@@ -11,16 +11,13 @@ import { Product } from '../modals/product';
   standalone: true,
 })
 export class ProductComponent {
-
+  //perent eken childt details denw
   @Input() product!: Product;
 
-  // public product: Product = {
-  //   price: 1000.0,
-  //   productName: 'Nike Air Max 90',
-  //   description:
-  //     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos',
-  //   stockCount: 1,
-  //   imgUrl:
-  //     'https://cdn.pixabay.com/photo/2020/10/11/05/36/nike-5644799_1280.jpg',
-  // };
+  //button click ek event ek nisa eventEmitter use krnw meka child marent data pass
+  @Output() cartItems = new EventEmitter<Product>();
+
+  addToCart() {
+    this.cartItems.emit(this.product);
+  }
 }

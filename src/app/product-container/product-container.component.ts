@@ -44,7 +44,7 @@ export class ProductContainerComponent {
       price: 23,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quos',
-      stockCount: 5,
+      stockCount: 0,
       productName: 'Sample  3',
       imgUrl:
         'https://cdn.pixabay.com/photo/2020/09/17/06/28/sneakers-5578127_1280.jpg',
@@ -68,4 +68,9 @@ export class ProductContainerComponent {
         'https://cdn.pixabay.com/photo/2020/05/27/07/41/nike-5226091_1280.jpg',
     },
   ];
+
+productOutPutEvent(product: Product) {
+  console.log(product);
+}
+
 }

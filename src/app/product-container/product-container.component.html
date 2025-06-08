@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row row-cols-4 g-3">
 
-
+<!-- button ek click une child component eke ekh nisa ekh click unh kiyla parent component ekt gnn one ekt @Output Detective ek dhla me vidiyt krnn one  -->
     <div  class="col" *ngFor="let product of productList" >
-      <app-product [product]="product"></app-product>
+      <app-product [product]="product" (cartItems)="productOutPutEvent($event)"></app-product>
     </div>
 
 

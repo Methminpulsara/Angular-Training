@@ -12,7 +12,11 @@
     </div>
 
     <div class="mt-auto">
-      <button class=" btn-color w-100 text-dark mt-3 ">Add to Cart</button>
-    </div>
+      <button class="btn btn-color  w-100 text-dark mt-3"
+
+      [disabled]="product.stockCount==0"
+      (click)="addToCart()"
+      >Add to Cart</button>
+      </div>
   </div>
 </div>
