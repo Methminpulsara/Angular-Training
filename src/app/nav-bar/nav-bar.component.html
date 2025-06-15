@@ -1,18 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar custom-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Ecommerce</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/product" appRedHighlight>Products</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" routerLink="/about">About</a>
-        </li> 
-      </ul>
-    </div>
+    <a class="navbar-brand" routerLink="/home">
+      <i class="bi bi-shop me-2"></i> Ecommerce
+    </a>
+
+    <ul class="navbar-nav flex-row gap-4 ms-auto align-items-center">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/product" appRedHighlight routerLinkActive="active">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+    </ul>
   </div>
 </nav>
