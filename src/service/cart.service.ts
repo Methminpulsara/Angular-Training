@@ -19,5 +19,17 @@ export class CartService {
     this.cartItems.update(items =>[...items,product]);
   }
 
+  getItems(){
+    return this.cartItems();
+  }
+
+ removeItems(index: number) {
+  this.cartItems.update(items => {
+    const newItems = items.filter((_, i) => i !== index);
+    return newItems;
+  });
+}
+
+
 
 }

@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="text-center">Cart</h3>
+  </div>
+  <div class="card-body">
+    @if (this.cartItems.length === 0) {
+      <p class="text-black text-center">Cart is Empty</p>
+    } @else {
+      <div class="list-group">
+        @for (item of this.cartItems; track item.productName; let i = $index) {
+          <div class="list-group-item d-flex gap-3 align-items-start">
+           <img *ngIf="item.imgUrl" [src]="item.imgUrl" alt="{{ item.productName }}" width="80" height="80" class="rounded border">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ item.productName }}</h5>
+              <p class="mb-1 text-muted">{{ item.description }}</p>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <strong>Price:</strong> ${{ item.price }}<br>
+                  <strong>In Stock:</strong> {{ item.stockCount }}
+                </div>
+               <button
+               class="btn btn-outline-danger" (click)="removeItemFromCart(i)">Remove</button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
