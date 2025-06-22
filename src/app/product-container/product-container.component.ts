@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../modals/product';
 import { NgFor } from '@angular/common';
+import { CartService } from '../../service/cart.service';
 
 
 @Component({
@@ -11,6 +12,12 @@ import { NgFor } from '@angular/common';
   styleUrl: './product-container.component.scss',
 })
 export class ProductContainerComponent {
+
+
+
+  constructor(private cartService:CartService){}
+
+
   yellow: Product = {
     price: 1000.0,
     productName: 'Nike Air Max 90',
@@ -70,7 +77,7 @@ export class ProductContainerComponent {
   ];
 
 productOutPutEvent(product: Product) {
-  console.log(product);
+ this.cartService.addToCart(product);
 }
 
 }
