@@ -1,10 +1,17 @@
-<div class="container">
-  <div class="row row-cols-4 g-3">
+<div class="container mt-4">
+  <div class="col-12 col-md-4 mb-3">
+    <select class="form-select" [(ngModel)]="selectedCategory" (change)="categoryChange(selectedCategory)">
+      <option value="All">All</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
 
-<!-- button ek click une child component eke ekh nisa ekh click unh kiyla parent component ekt gnn one ekt @Output Detective ek dhla me vidiyt krnn one  -->
-    <div  class="col" *ngFor="let product of productList" >
-      <app-product [product]="product" (cartItems)="productOutPutEvent($event)"></app-product>
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    <div class="col" *ngFor="let product of filteredProductList">
+      <app-product
+        [product]="product"
+        (cartItems)="productOutPutEvent($event)">
+      </app-product>
     </div>
-
   </div>
 </div>
