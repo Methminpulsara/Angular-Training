@@ -10,9 +10,7 @@ import { CartCardComponent } from "../cart-card/cart-card.component";
 })
 export class CartContainerComponent {
 
-  constructor(public cartService :CartService){
-
-  }
+  constructor(public cartService :CartService){}
 
 
   onRemoveItem(cartItem :number){

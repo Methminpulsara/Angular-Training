@@ -1,9 +1,14 @@
 
 
 export interface Product {
-    productName:string,
-    price: number,
-    description:string,
-    stockCount: number,
-    imgUrl?: string
+   id:number;
+   title:string;
+   price:number;
+   description:string;
+   category:string;
+   image:string;
+   rating:{
+         rate:number;
+         count:number;
+        }
 }

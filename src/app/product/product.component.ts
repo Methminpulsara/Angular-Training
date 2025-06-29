@@ -23,7 +23,9 @@ export class ProductComponent {
   @Output() cartItems = new EventEmitter<Product>();
 
 
-  
+  getShortDescription(description: string): string {
+  return description.length > 100 ? description.substring(0, 100) + '...' : description;
+}
 
   addToCart() {
     this.cartItems.emit(this.product);

@@ -1,22 +1,20 @@
-<div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden shadow shadow-lg">
-  <img [src]="product.imgUrl" class="card-img-top object-fit-cover" [alt]="product.productName" style="height: 200px;">
+<div class="product-card">
+  <div class="product-image-container">
+    <img [src]="product.image" class="product-image" [alt]="product.title">
+  </div>
 
-  <div class="card-body d-flex flex-column justify-content-between">
-    <div>
-      <h5 class="card-title fw-semibold text-primary">{{ product.productName }}</h5>
-      <p class="card-text text-muted">Price: ${{ product.price }}</p>
-      <p class="card-text small text-secondary border-start ps-2 border-3 border-warning">
-        {{ product.description }}
-      </p>
-      <p class="card-text text-success">Stock: {{ product.stockCount }}</p>
+  <div class="product-content">
+    <div class="product-header">
+      <h3 class="product-title">{{ product.title }}</h3>
+      <div class="product-price">${{ product.price }}</div>
     </div>
 
-    <div class="mt-auto">
-      <button class="btn btn-color  w-100 text-dark mt-3"
+    <p class="product-description">
+      {{ getShortDescription(product.description) }}
+    </p>
 
-      [disabled]="product.stockCount==0"
-      (click)="addToCart()"
-      >Add to Cart</button>
+    <div class="product-footer">
+      <div class="product-rating">
+        <span class="rating-stars">⭐</span>
+        <span class="rating-value">{{ product.rating.rate }}</span>
       </div>
-  </div>
-</div>

@@ -16,10 +16,10 @@ export class CartCardComponent {
 
   @Output() removeItem = new EventEmitter<number>();
 
+  @Input() totalItems: number = 0;
 
   removeItemFromCart(index: number) {
     this.removeItem.emit(index);
   }
-
 
 }

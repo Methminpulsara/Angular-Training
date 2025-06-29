@@ -1,7 +1,10 @@
-
-
 <div class ="container">
-  <app-cart-card [cartItems]="this.cartService.getItems()" (removeItem)="onRemoveItem($event)"></app-cart-card>
+  <app-cart-card
+    [totalItems]="this.cartService.totalItems()"
+    [cartItems]="this.cartService.getItems()"
+    (removeItem)="onRemoveItem($event)"
+  ></app-cart-card>
 </div>
+
 
 
