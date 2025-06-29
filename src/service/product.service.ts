@@ -11,9 +11,10 @@ export class ProductService{
     constructor (private http:HttpClient){}
 
 
+    baseUrl = "https://fakestoreapi.com/products";
 
   getAllItems():Observable<Product[]> {
-    return this.http.get<Product[]>('https://fakestoreapi.com/products');
+    return this.http.get<Product[]>(this.baseUrl);
   }
 
 
