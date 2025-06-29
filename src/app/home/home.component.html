@@ -1,4 +1,14 @@
-<h1>{{this.cartService.count()}}</h1>
+<div class="container">
+  <h1>{{this.cartService.count()}}</h1>
 
 <button  (click)="onIncrementCount()">Increment</button>
+<button (click)="getData()">Subscribe</button>
 
+<button (click)="test()">Thread</button>
+
+<div *ngFor=" let number of numbers">
+  <h3>{{number}}</h3>
+</div>
+
+
+</div>

@@ -30,8 +30,14 @@ export class ProductContainerComponent implements OnInit {
   getAllProducts() {
     this.productService.getAllItems().subscribe((data) => {
       this.productList = data;
-      console.log(data);
-
     })
   }
+
+
+
+
+
+
+
+
 }

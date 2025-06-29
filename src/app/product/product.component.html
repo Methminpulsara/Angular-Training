@@ -1,20 +1,25 @@
-<div class="product-card">
-  <div class="product-image-container">
-    <img [src]="product.image" class="product-image" [alt]="product.title">
+<div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden modern-card">
+  <div class="product-image-wrapper">
+    <img [src]="product.image" class="card-img-top object-fit-cover" [alt]="product.title" style="height: 200px;">
   </div>
 
-  <div class="product-content">
-    <div class="product-header">
-      <h3 class="product-title">{{ product.title }}</h3>
-      <div class="product-price">${{ product.price }}</div>
+  <div class="card-body d-flex flex-column justify-content-between">
+    <div>
+      <h5 class="card-title fw-semibold text-primary modern-title">{{ product.title }}</h5>
+      <p class="card-text price-text">Price: <span class="price-value">${{ product.price }}</span></p>
+      <p class="card-text small text-secondary border-start ps-2 border-3 border-warning modern-description">
+        {{ getShortDescription(product.description) }}
+      </p>
+      <div class="rating-container">
+        <span class="rating-star">⭐</span>
+        <span class="card-text text-success rating-text">Rating: {{ product.rating.rate }}</span>
+      </div>
     </div>
 
-    <p class="product-description">
-      {{ getShortDescription(product.description) }}
-    </p>
-
-    <div class="product-footer">
-      <div class="product-rating">
-        <span class="rating-stars">⭐</span>
-        <span class="rating-value">{{ product.rating.rate }}</span>
-      </div>
+    <div class="mt-auto">
+      <button class="btn btn-color w-100 text-dark mt-3" (click)="addToCart()">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
