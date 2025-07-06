@@ -5,6 +5,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { CartService } from '../../service/cart.service';
 import { ProductService } from '../../service/product.service';
 import { FormsModule } from '@angular/forms';
+import { WishListService } from '../../service/wishListService';
 
 @Component({
   selector: 'app-product-container',
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./product-container.component.scss'],
 })
 export class ProductContainerComponent implements OnInit {
+
   productList: Product[] = [];
 
   public categories: string[] = [];
@@ -22,20 +24,28 @@ export class ProductContainerComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private productService: ProductService
+    private productService: ProductService,
+    private wishService :WishListService
   ) {}
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.getCategorys()
   }
 
   productOutPutEvent(product: Product) {
     this.cartService.addToCart(product);
   }
 
+  wishOut(product:Product){
+    this.wishService.addToCart(product);
+  }
+
+
+
+
   getAllProducts() {
     this.productService.getAllItems().subscribe((data) => {
-      this.categories = Array.from(new Set(data.map(product => product.category)));
       this.productList = data;
       this.filteredProductList = data;
     });
@@ -55,9 +65,27 @@ export class ProductContainerComponent implements OnInit {
   }
 
 
-  
+
 categoryChange(name: string) {
   this.filterByCategory(name);
 }
+
+productRemoveEvent($event: Product) {
+console.log("deleted");
+
+}
+
+getCategorys(){
+  this.productService.getCategoryItems().subscribe({
+    next : (data) => {
+      this.categories = data;
+    },
+    error : (error) => {
+      console.log(error);
+    }
+  })
+}
+
+
 
 }

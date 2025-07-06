@@ -10,7 +10,9 @@
     <div class="col" *ngFor="let product of filteredProductList">
       <app-product
         [product]="product"
-        (cartItems)="productOutPutEvent($event)">
+        (cartItems)="productOutPutEvent($event)"
+        (wishList)="wishOut($event)"
+        >
       </app-product>
     </div>
   </div>

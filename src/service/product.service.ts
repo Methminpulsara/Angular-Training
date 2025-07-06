@@ -17,5 +17,9 @@ export class ProductService{
     return this.http.get<Product[]>(this.baseUrl);
   }
 
+  getCategoryItems():Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/categories`);
+  }
+
 
 }

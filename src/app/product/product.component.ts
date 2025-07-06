@@ -12,9 +12,7 @@ import { Product } from '../modals/product';
   standalone: true,
 })
 export class ProductComponent {
-
-  constructor(private cartService :CartService){}
-
+  constructor(private cartService: CartService) {}
 
   //perent eken childt details denw
   @Input() product!: Product;
@@ -22,12 +20,19 @@ export class ProductComponent {
   //button click ek event ek nisa eventEmitter use krnw meka child marent data pass
   @Output() cartItems = new EventEmitter<Product>();
 
+  @Output() wishList = new EventEmitter<Product>();
 
   getShortDescription(description: string): string {
-  return description.length > 100 ? description.substring(0, 100) + '...' : description;
-}
+    return description.length > 100
+      ? description.substring(0, 100) + '...'
+      : description;
+  }
 
   addToCart() {
     this.cartItems.emit(this.product);
   }
+
+addToWishList(){
+  this.wishList.emit(this.product)
+}
 }

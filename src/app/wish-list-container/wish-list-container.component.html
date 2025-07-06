@@ -1,0 +1,5 @@
+<div class="container">
+<app-wish-list
+[wishItems]="wishLustService.getItems()"
+(toCart)="addToCart($event)"></app-wish-list>
+</div>
