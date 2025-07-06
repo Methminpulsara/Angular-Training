@@ -13,8 +13,10 @@ export class WishListComponent {
   @Input() wishItems: Product[] = [];
 
 @Output () toCart = new EventEmitter<Product[]>();
-onAddToCart(){
 
+
+
+onAddToCart() {
   this.toCart.emit(this.wishItems);
 }
 

@@ -16,8 +16,9 @@ export class WishListContainerComponent {
 
   constructor(public wishLustService:WishListService){}
 
-addToCart(product:any){
+addToCart(product: any) {
   this.wishLustService.addToWishList(product);
 }
+
 
 }

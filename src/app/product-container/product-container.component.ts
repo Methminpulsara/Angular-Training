@@ -38,7 +38,7 @@ export class ProductContainerComponent implements OnInit {
   }
 
   wishOut(product:Product){
-    this.wishService.addToCart(product);
+    this.wishService.addToWishList(product);
   }
 
 
