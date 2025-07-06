@@ -17,7 +17,7 @@ export class WishListContainerComponent {
 
   constructor(public wishLustService:WishListService,private cartService:CartService){}
 
-addToCart(product: any) {
+addToCart(product:any) {
  let added= this.cartService.addToCart(product);
 
 }
