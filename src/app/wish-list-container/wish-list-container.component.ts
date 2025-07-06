@@ -4,6 +4,7 @@ import { WishListService } from '../../service/wishListService';
 import { Product } from '../modals/product';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'app-wish-list-container',
@@ -14,10 +15,11 @@ import { FormsModule } from '@angular/forms';
 export class WishListContainerComponent {
 
 
-  constructor(public wishLustService:WishListService){}
+  constructor(public wishLustService:WishListService,private cartService:CartService){}
 
 addToCart(product: any) {
-  this.wishLustService.addToWishList(product);
+ let added= this.cartService.addToCart(product);
+
 }
 
 
