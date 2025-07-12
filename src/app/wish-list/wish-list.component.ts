@@ -12,12 +12,12 @@ import { FormsModule } from '@angular/forms';
 export class WishListComponent {
   @Input() wishItems: Product[] = [];
 
-@Output () toCart = new EventEmitter<Product[]>();
+@Output () toCart = new EventEmitter<Product>();
 
 
 
-onAddToCart() {
-  this.toCart.emit(this.wishItems);
+onAddToCart(item:Product) {
+  this.toCart.emit(item);
 }
 
 }
