@@ -28,10 +28,15 @@ export class WishListService {
   getItems() {
     return this.wish();
   }
-removeItems(productId: number) {
-  this.wish.update((items) => items.filter(item => item.id !== productId));
-  this.updateTotalItems();
-}
+  removeItems(index: number) {
+    this.wish.update((items) => {
+      const newItems = [...items];
+      newItems.splice(index, 1);
+      return newItems;
+    });
+   this.updateTotalItems();
+  }
+
 
   updateTotalItems() {
     this.totalItems.set(this.wish().length);

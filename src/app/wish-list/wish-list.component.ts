@@ -10,14 +10,16 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './wish-list.component.scss',
 })
 export class WishListComponent {
-  @Input() wishItems: Product[] = [];
 
-@Output () toCart = new EventEmitter<Product>();
+  @Input() wishItems : Product[] = [];
+
+  @Output () toCart = new EventEmitter<{index : number, product:Product}>();
 
 
 
-onAddToCart(item:Product) {
-  this.toCart.emit(item);
-}
+  onAddToCart(i: number) {
+    this.toCart.emit({ index: i, product: this.wishItems[i] });
+
+  }
 
 }

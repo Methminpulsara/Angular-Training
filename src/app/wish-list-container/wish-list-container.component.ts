@@ -17,10 +17,9 @@ export class WishListContainerComponent {
 
   constructor(public wishLustService:WishListService,private cartService:CartService){}
 
-addToCart(product: Product) {
-  let added = this.cartService.addToCart(product);
-  this.wishLustService.removeItems(product.id); 
-
+addToCart($event: {index:number , product:Product}) {
+this.cartService.addToCart($event.product);
+this.wishLustService.removeItems($event.index);
 }
 
 
