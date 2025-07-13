@@ -6,6 +6,7 @@ import { CartService } from '../../service/cart.service';
 import { ProductService } from '../../service/product.service';
 import { FormsModule } from '@angular/forms';
 import { WishListService } from '../../service/wishListService';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-product-container',
@@ -16,11 +17,16 @@ import { WishListService } from '../../service/wishListService';
 })
 export class ProductContainerComponent implements OnInit {
 
+
+  private searchSubject = new Subject<string>();
+
+
   productList: Product[] = [];
 
   public categories: string[] = [];
   selectedCategory: string = 'All';
   filteredProductList: Product[] = [];
+  search:string =''
 
   constructor(
     private cartService: CartService,
@@ -29,6 +35,7 @@ export class ProductContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.setupSearchSubscription();
     this.getAllProducts();
     this.getCategorys()
   }
@@ -85,6 +92,51 @@ getCategorys(){
     }
   })
 }
+
+
+
+
+
+
+
+private setupSearchSubscription(){
+  this.searchSubject.pipe(
+    debounceTime(300),
+    distinctUntilChanged(),
+
+  ).subscribe(val => {
+    this.filterterProduct();
+  })
+}
+
+filterterProduct(){
+
+  let filterd = this.productList;
+
+  if(this.selectedCategory != 'All'){
+    filterd = filterd.filter( p => p.category == this.selectedCategory
+    );
+  }
+
+  if(this.search){
+    let searchTermLower = this.search.toLowerCase()
+
+    filterd = filterd.filter(
+      p =>
+        p.title.toLowerCase().includes(searchTermLower) ||
+        p.description.toLowerCase().includes(searchTermLower)
+    );
+  }
+
+  this.filteredProductList = filterd;
+
+
+}
+
+onInputChange($event:string) {
+  this.searchSubject.next($event);
+}
+
 
 
 
