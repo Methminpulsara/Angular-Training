@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductComponent } from "../product/product.component";
 import { Product } from '../modals/product';
 import { CommonModule, NgFor } from '@angular/common';
@@ -15,7 +15,7 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
   templateUrl: './product-container.component.html',
   styleUrls: ['./product-container.component.scss'],
 })
-export class ProductContainerComponent implements OnInit {
+export class ProductContainerComponent implements OnInit , OnDestroy {
 
 
   private searchSubject = new Subject<string>();
@@ -39,6 +39,14 @@ export class ProductContainerComponent implements OnInit {
     this.getAllProducts();
     this.getCategorys()
   }
+
+  ngOnDestroy(){
+
+    this.searchSubject.complete();
+    console.log("closed");
+
+  }
+
 
   productOutPutEvent(product: Product) {
     this.cartService.addToCart(product);
@@ -113,13 +121,13 @@ filterterProduct(){
 
   let filterd = this.productList;
 
-  if(this.selectedCategory != 'All'){
-    filterd = filterd.filter( p => p.category == this.selectedCategory
+  if(this.selectedCategory != 'all'){
+    filterd = filterd.filter( p => p.category === this.selectedCategory
     );
   }
 
   if(this.search){
-    let searchTermLower = this.search.toLowerCase()
+    let searchTermLower = this.search.trim().toLowerCase()
 
     filterd = filterd.filter(
       p =>
